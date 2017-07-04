@@ -223,12 +223,21 @@
 
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
-    // _.reduce(collection, function(el) {
-    //   return iterator(el);
-    // });
+    var memo = true;
+    iterator = iterator || _.identity;
+    if (collection.length === 0) {
+      return true;
+    } 
+
+    return _.reduce(collection, function(memo, item){
+      if(memo === false) {
+        return false;
+      }
+        return !!(iterator(item));
+        
+    }, memo);
 
   };
-
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
   _.some = function(collection, iterator) {
