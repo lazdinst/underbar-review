@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var FILL_ME_IN = 'Fill this value in';
+  var FILL_ME_IN = 1;
 
   var checkForNativeMethods = function(runUnderbarFunction) {
     it('should not use the native version of any underbar methods in its implementation', function() {
@@ -33,7 +33,7 @@
     describe('first', function() {
 
       it('should be able to pull out the first element of an array', function() {
-        expect(_.first([1, 2, 3])).to.equal(FILL_ME_IN);
+        expect(_.first([1, 2, 3])).to.equal(1);
       });
 
       it('should accept an index argument', function() {
@@ -43,7 +43,7 @@
       it('should return empty array if zero is passed in as the index', function() {
         // There is a very important difference between `equal` and `eql`
         // Can you discover what it is?
-        expect(_.first([1, 2, 3], 0)).to.eql(FILL_ME_IN);
+        expect(_.first([1, 2, 3], 0)).to.eql([]);
       });
 
       it('should return all the array\'s elements if the index argument is larger than the length of the array', function() {
