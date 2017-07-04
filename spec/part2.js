@@ -58,7 +58,11 @@
       it('should return false given an array and a value not in that array', function() {
         // Replace this line with an `expect` statement that tests
         // the behavior described by the `it` string
-        throw new Error('This test is missing.');
+        var array = [1, 2, 3];
+        var value = 0;
+        var result = _.contains(array, value);
+        expect(result).to.be.false;
+        // throw new Error('This test is missing.');
       });
 
       it('should return true given a object and a value from that object', function() {
