@@ -128,7 +128,15 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
-    return array.slice();
+    var result = [];
+    _.each(array, function(el) {
+      if(!result.includes(el)){
+        result.push(el);
+      } else {
+        //Do Nothing
+      }
+    });
+    return result;
   };
 
 
