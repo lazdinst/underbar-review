@@ -412,7 +412,18 @@
 
   // Calls the method named by functionOrKey on each value in the list.
   // Note: You will need to learn a bit about .apply to complete this.
+  // ['cat', 'dog'].toUpperCase();
+
   _.invoke = function(collection, functionOrKey, args) {
+    return _.map(collection, function(item) {
+      var method;
+      if (typeof(functionOrKey) === 'string') {
+        method = item[functionOrKey];
+      } else {
+        method = functionOrKey;
+      }
+      return method.apply(item, args);
+    });
   };
 
   // Sort the object's values by a criterion produced by an iterator.
@@ -435,6 +446,15 @@
   //
   // Hint: Use Array.isArray to check if something is an array
   _.flatten = function(nestedArray, result) {
+    return _.reduce(nestedArray, function (accumulator, item) {
+      if(Array.isArray(item)) {
+        return accumulator.concat(_.flatten(item));
+      } else {
+        return accumulator.concat(item);
+      }
+      //return flat.concat(Array.isArray(toFlatten) ? _.flatten(toFlatten) : toFlatten);
+    
+    }, []);
   };
 
   // Takes an arbitrary number of arrays and produces an array that contains
